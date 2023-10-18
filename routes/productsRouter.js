@@ -3,6 +3,8 @@ const router = express.Router();
 const productController = require('../controllers/productController');
 
 router.get('/', productController.get_All_Products);
+router.get('/add-product', productController.get_Form_Add_Product);
+router.post('/', productController.post_Product);
 
 // app.get(api+'/products', async(req,res) => {  // async+await = .then, .catch
 //     const productList = await Product.find();

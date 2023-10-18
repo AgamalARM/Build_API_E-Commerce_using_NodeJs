@@ -1,14 +1,19 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const mongoose = require('mongoose'); // for mongodb
 // http requests logger middleware morgan
 const morgan = require('morgan');
-//Routes
-const productRouter = require('./routers/productsRouter');
+
+const productRouter = require('./routes/productsRouter');
 
 require('dotenv/config'); // to read Public Enviroment Variables at all project ".env"
 const api = process.env.API_URL ;
+
+//enable cors
+app.use(cors());
+app.options('*',cors());
 
 // register view engine
 app.set('view engine', 'ejs');
@@ -17,6 +22,8 @@ app.set('view engine', 'ejs');
 //middleware 
 app.use(bodyParser.json()); //for handlling json
 app.use(morgan('tiny'));   // http requests logger middleware morgan
+
+///////Routes
 app.use(api+'/products', productRouter);
 
 app.use(express.static('public'));
@@ -33,9 +40,10 @@ app.use((req, res) => {
 // connection to mongodb before start the server
 mongoose.connect(process.env.CONNECTION_STRING ,{ useNewUrlParser: true, useUnifiedTopology: true })
 .then((result) => app.listen(3000, () => {
-    console.log('DataBase is connrcted');
+    console.log('DataBase is connected');
     console.log('Server is running on port 3000');
 }))
 .catch((err) => {
     console.log(err);
 })
+

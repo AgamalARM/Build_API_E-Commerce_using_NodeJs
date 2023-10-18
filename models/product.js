@@ -25,17 +25,13 @@ const productSchema = new Schema({
         type: Number,
         require: true
     },
-    total: {
-        type: Number,
-        require: true
-    },
-    merchant: {
+    Brand: {
         type: String,
         require: true
     },
     addToCard: {
         type: Boolean,
-        require: true
+
     }
 
 }, {timestamps: true});
