@@ -9,20 +9,22 @@
 
     <% if (blogs.length > 0) { %>
       <% blogs.forEach(blog => { %>
-        <a class="single" href="/blogs/<%= blog._id %>">
-          <h3 class="title"><%= blog.product %></h3>
+        <a class="single" href="/api/v1/products/<%= blog._id %>">
+          <h3 class="title"><%= blog.product %></h3> 
+          <p class="snippet"><%= blog.description %></p>
+          <p class="snippet"><%= blog.brand %></p>
           <p class="snippet"><%= blog.price %></p>
         </a>
+        
         <hr>
       <% }) %>
     <% } else { %>
-      <p>There are no blogs to display...</p>
+      <p>There are no products to display...</p>
     <% } %>
     
   </div>
 
     
-  </div>
 
   <%- include("./partials/footer.ejs") %>
 </body>

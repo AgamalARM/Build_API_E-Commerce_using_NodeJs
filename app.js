@@ -18,17 +18,17 @@ app.options('*',cors());
 // register view engine
 app.set('view engine', 'ejs');
 
+// middleware & static files
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan('dev'));
+app.use(express.json());
 
-//middleware 
-app.use(bodyParser.json()); //for handlling json
+// app.use(bodyParser.json()); //for handlling json
 app.use(morgan('tiny'));   // http requests logger middleware morgan
 
 ///////Routes
 app.use(api+'/products', productRouter);
-
-app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true }));
-app.use(morgan('dev'));
 
 
 // 404 page

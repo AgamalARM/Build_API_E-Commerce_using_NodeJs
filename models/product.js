@@ -18,14 +18,14 @@ const productSchema = new Schema({
         require: true
     },
     VAT: {
-        type: Boolean,
+        type: Number,
         require: true
     },
     shipping: {
         type: Number,
         require: true
     },
-    Brand: {
+    brand: {
         type: String,
         require: true
     },
