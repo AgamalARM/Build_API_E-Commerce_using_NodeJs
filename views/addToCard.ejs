@@ -1,0 +1,21 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+  <div>
+    <form action="/api/v1/myCard" method="post">
+        <label for="">Product Name: <%= blog.product %></label><br><br>
+        <label for="">Quantity: </label>
+        <input type="number" name="quantity" id=""><br><br>
+        <input type="hidden" name="id" value="<%= blog._id %>">
+        <input type="submit" value="Send Order">
+    </form>
+  </div>
+
+
+
+  
+  <%- include("./partials/footer.ejs") %>
+</body>
+</html>

@@ -95,7 +95,18 @@
     }
     .delete:hover{
       cursor: pointer;
-      box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+      box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.959);
+    }
+    .addToCard{
+      position: absolute;
+      top: 80;
+      right: 0;
+      border-radius: 50%;
+      padding: 8px;
+    }
+    .addToCard:hover{
+      cursor: pointer;
+      box-shadow: 1px 2px 3px rgba(126, 15, 15, 0.902);
     }
 
 

@@ -13,6 +13,9 @@
         <p><%= blog.shipping %></p>
         <p><%= blog.brand %></p>
     </div>
+    <p>
+        <a  class="addToCard" href="/api/v1/products/<%= blog._id %>/addToCard">Add to Card</a>
+    </p>
     <a class="delete" data-doc="<%= blog._id %>">delete</a>
   </div>
 

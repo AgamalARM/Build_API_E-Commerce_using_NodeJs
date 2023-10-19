@@ -63,9 +63,26 @@ const delete_A_Product = (req,res) => {
 
 }
 
+const add_To_Card = (req,res) => {
+  const id = req.params.id;
+  Product.findById(id)
+    .then(result => {
+      res.render('addToCard',{blog: result, title: 'Add to my Card'});
+    })
+    .catch(err => {
+      console.log(err);
+    })
+
+}
+
+
+
+
+
 module.exports = { get_All_Products, 
                    get_Form_Add_Product,
                    post_Product,
                    view_A_Product,
-                   delete_A_Product
+                   delete_A_Product,
+                   add_To_Card
                    };

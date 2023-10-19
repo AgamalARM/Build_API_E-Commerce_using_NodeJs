@@ -2,11 +2,14 @@ const express = require('express');
 const router = express.Router();
 const productController = require('../controllers/productController');
 
+
 router.get('/', productController.get_All_Products);
 router.get('/add-product', productController.get_Form_Add_Product);
 router.post('/', productController.post_Product);
 router.get('/:id', productController.view_A_Product);
 router.delete('/:id', productController.delete_A_Product);
+router.get('/:id/addToCard',productController.add_To_Card );
+
 
 // app.get(api+'/products', async(req,res) => {  // async+await = .then, .catch
 //     const productList = await Product.find();
