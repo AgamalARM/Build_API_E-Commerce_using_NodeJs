@@ -9,6 +9,8 @@ router.post('/', productController.post_Product);
 router.get('/:id', productController.view_A_Product);
 router.delete('/:id', productController.delete_A_Product);
 router.get('/:id/addToCard',productController.add_To_Card );
+router.post('/myCard',productController.post_myCard);
+// router.get('/viewCard', productController.my_Card);
 
 
 // app.get(api+'/products', async(req,res) => {  // async+await = .then, .catch

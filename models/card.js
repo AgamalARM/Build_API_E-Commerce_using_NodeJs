@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema ;
 
-const orderItemSchema = mongoose.Schema({
+const cardSchema = new Schema({
     quantity: {
         type: Number,
         required: true
@@ -9,7 +10,8 @@ const orderItemSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Product'
     }
-})
 
-exports.OrderItem = mongoose.model('OrderItem', orderItemSchema);
+},{timestamps: true});
 
+const Card = mongoose.model('Card', cardSchema);
+module.exports = Card ;

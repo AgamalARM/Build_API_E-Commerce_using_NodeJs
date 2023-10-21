@@ -6,8 +6,10 @@ const mongoose = require('mongoose'); // for mongodb
 // http requests logger middleware morgan
 const morgan = require('morgan');
 
+const Card = require("./models/card");
+const Product = require("./models/product");
+
 const productRouter = require('./routes/productsRouter');
-const myCardRouter = require('./routes/myCardRouter');
 
 require('dotenv/config'); // to read Public Enviroment Variables at all project ".env"
 const api = process.env.API_URL ;
@@ -28,15 +30,24 @@ app.use(express.json());
 // app.use(bodyParser.json()); //for handlling json
 app.use(morgan('tiny'));   // http requests logger middleware morgan
 
-//////
-app.post('/api/v1/myCard', (req,res) => {
-  console.log(req.body);
-});
-/////
+
 ///////Routes
 app.use(api+'/products', productRouter);
-app.use(api+'/myCard', myCardRouter);
 
+app.get('/viewCard', (req,res) => {
+  console.log('in my card controller');
+  Card.find()
+  .sort({ createdAt: -1 })
+  .then((result) => {
+    res.render("viewCard", { products: result, title: "My Card" });
+    
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+
+});
 
 // 404 page
 app.use((req, res) => {

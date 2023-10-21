@@ -1,4 +1,5 @@
 const Product = require("../models/product");
+const Card = require("../models/card");
 
 const get_All_Products = (req, res) => {
   Product.find()
@@ -75,6 +76,31 @@ const add_To_Card = (req,res) => {
 
 }
 
+const post_myCard = (req,res) => {
+  console.log(req.body.id);
+  console.log(req.body.quantity);
+  var card = new Card ({
+    quantity: req.body.quantity,
+    product: req.body.id,
+
+  });
+  card.save()
+      .then((result) => {
+        res.redirect('/api/v1/products');
+      })
+      .catch((error) =>{
+         console.log(error);
+      }); 
+  //res.redirect('/api/v1/products/myCard');
+
+}
+
+// const my_Card = (req,res) => {
+//   console.log('in my card controller');
+//   res.locals.message = req.flash("info");
+//   res.render("viewCard",{title: 'My Card'});
+// }
+
 
 
 
@@ -84,5 +110,6 @@ module.exports = { get_All_Products,
                    post_Product,
                    view_A_Product,
                    delete_A_Product,
-                   add_To_Card
+                   add_To_Card,
+                   post_myCard
                    };
